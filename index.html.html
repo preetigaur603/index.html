@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Independence Day Invitation</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(
+        to bottom,
+        #ff9933 33.3%,
+        #ffffff 33.3% 66.6%,
+        #138808 66.6%
+      );
+      padding: 40px;
+    }
+
+    .flag-border {
+      border: 10px solid rgba(0, 0, 0, 0.2);
+      border-radius: 20px;
+      padding: 20px;
+      background: white;
+      box-shadow: 0 0 20px rgba(0,0,0,0.25);
+    }
+
+    .invitation {
+      max-width: 500px;
+      padding: 30px 20px;
+      border-radius: 15px;
+      background-color: rgba(255, 255, 255, 0.9);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      text-align: center;
+    }
+
+    .invitation h1 {
+      color: #ff9933;
+      font-size: 2em;
+      margin-bottom: 10px;
+    }
+
+    .invitation h2 {
+      color: #138808;
+      font-size: 1.2em;
+      margin-bottom: 20px;
+    }
+
+    .invitation p {
+      font-size: 1em;
+      margin: 10px 0;
+    }
+
+    .label {
+      font-weight: bold;
+      color: #000066;
+    }
+
+    .footer {
+      margin-top: 20px;
+      font-size: 0.9em;
+      color: #444;
+    }
+
+    a {
+      color: #0000cc;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .countdown {
+      margin-top: 20px;
+      font-size: 1.2em;
+      font-weight: bold;
+      color: #cc0000;
+    }
+
+    @media (max-width: 600px) {
+      body {
+        padding: 20px;
+      }
+
+      .invitation {
+        padding: 20px 15px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="flag-border">
+    <div class="invitation">
+      <h1>Independence Day Celebration 🇮🇳</h1>
+      <h2>Hosted by Graphic Era Deemed to be University</h2>
+
+      <p><span class="label">📅 Date & Time:</span> 15th August, 08:00 AM</p>
+      <p><span class="label">📍 Location:</span> Graphic Era University Campus <br>
+        <a href="https://www.google.com/maps?q=graphic+era+deemed+to+be+university" target="_blank">📌 View on Map</a>
+      </p>
+      <p><span class="label">🎤 Event Description:</span><br> We will be presenting awards to our brave soldiers and remembering the efforts of our freedom fighters.</p>
+      <p><span class="label">👕 Dress Code:</span> White Kurta Pajama with National Flag Badge</p>
+
+      <!-- ⏳ Countdown Timer -->
+      <div class="countdown" id="countdown">Loading countdown...</div>
+
+      <div class="footer">
+        🇮🇳 Let's honor our heroes together! Jai Hind! 🇮🇳
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const countdownElement = document.getElementById("countdown");
+    const eventDate = new Date("2025-08-15T08:00:00").getTime();
+
+    const timer = setInterval(() => {
+      const now = new Date().getTime();
+      const distance = eventDate - now;
+
+      if (distance < 0) {
+        clearInterval(timer);
+        countdownElement.innerHTML = "🎉 The event has started!";
+        return;
+      }
+
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      countdownElement.innerHTML = `⏳ ${days}d ${hours}h ${minutes}m ${seconds}s remaining`;
+    }, 1000);
+  </script>
+
+</body>
+</html>
